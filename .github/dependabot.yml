@@ -4,8 +4,27 @@
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+registries:
+  docker-github: # Define access for a private registry 
+    type: docker-registry
+    url: ghcr.io
+    username: hobbs1210
+    password: ${{secrets.GH_PACKAGES_KEY}}
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
+    registries:
+      - docker-github
     schedule:
       interval: "daily"
+    labels:
+      - maintenance
+      - dependencies 
+
+  - package-ecosystem: "github-actions"
+    directory: "/" # This should be / rather than .github/workflows
+    schedule:
+      interval: daily
+    labels:
+      - maintenance
+      - dependencies
