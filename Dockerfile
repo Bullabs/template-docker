@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/bullabs/docker-alpine-base/docker-alpine-base:3.13
+FROM ghcr.io/bullabs/docker-alpine-base/docker-alpine-base:3.19
 LABEL maintainer "Bullabs <containers@bullabs.dev>"
 ENV BULLABS_APP_NAME="{APPNAME}"
 
